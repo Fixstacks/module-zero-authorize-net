@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    Plugs the Authorize.Net card form into Zero Checkout's payment step.
+    Disabling Zero_AuthorizeNet removes it.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="zero.checkout.payment.forms">
+            <block class="Magento\Framework\View\Element\Template" name="zero.checkout.payment.authorizenet"
+                   template="Zero_AuthorizeNet::checkout/card-fields.phtml">
+                <arguments>
+                    <argument name="authNetConfig" xsi:type="object">Zero\AuthorizeNet\ViewModel\CheckoutConfig</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

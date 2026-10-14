@@ -1,0 +1,19 @@
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * Picked up by the Zero theme build (scripts/collect-module-styles.mjs)
+ * while Zero_AuthorizeNet is enabled: Tailwind builds the classes its templates use.
+ */
+@source "../templates/**/*.phtml";
+
+/* The card fields panel (checkout/card-fields.phtml): shown by a `:has()` rule on the payment method radios. */
+@layer components {
+    #authorizenet-card-fields {
+        display: none;
+    }
+
+    #payment-methods:has(input[value="zero_authorizenet"]:checked) ~ #authorizenet-card-fields {
+        display: flex;
+    }
+}

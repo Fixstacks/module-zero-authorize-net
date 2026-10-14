@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * Hosts Accept.js loads from and posts card data to (production and sandbox).
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="authnet-js-authorize-net" type="host">https://js.authorize.net</value>
+                <value id="authnet-jstest-authorize-net" type="host">https://jstest.authorize.net</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="authnet-js-authorize-net" type="host">https://js.authorize.net</value>
+                <value id="authnet-jstest-authorize-net" type="host">https://jstest.authorize.net</value>
+                <value id="authnet-api-authorize-net" type="host">https://api.authorize.net</value>
+                <value id="authnet-api2-authorize-net" type="host">https://api2.authorize.net</value>
+                <value id="authnet-apitest-authorize-net" type="host">https://apitest.authorize.net</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="authnet-js-authorize-net" type="host">https://js.authorize.net</value>
+                <value id="authnet-jstest-authorize-net" type="host">https://jstest.authorize.net</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

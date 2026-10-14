@@ -1,0 +1,44 @@
+{
+    "name": "fixstacks/module-zero-authorize-net",
+    "description": "Zero for Magento Open Source: Authorize.Net cards (Accept.js) for Zero Checkout.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Roman Pasichnyk"
+        }
+    ],
+    "homepage": "https://fixstacks.com/zero",
+    "keywords": [
+        "magento",
+        "magento2",
+        "magento-open-source",
+        "zero",
+        "authorize-net",
+        "payment"
+    ],
+    "require": {
+        "php": "~8.2.0||~8.3.0||~8.4.0",
+        "magento/framework": "103.0.*",
+        "magento/module-checkout": "*",
+        "magento/module-config": "*",
+        "magento/module-csp": "*",
+        "magento/module-directory": "*",
+        "magento/module-payment": "*",
+        "magento/module-sales": "*",
+        "magento/module-store": "*",
+        "fixstacks/module-zero-checkout": "^1.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Zero\\AuthorizeNet\\": ""
+        }
+    }
+}

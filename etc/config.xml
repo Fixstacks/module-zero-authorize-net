@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+    Copyright © 2026 Roman Pasichnyk
+    SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+
+    Capture-only: capture() charges with the Accept.js token as one auth+capture
+    transaction (no separate authorize-then-capture flow).
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/config.xsd">
+    <default>
+        <payment>
+            <zero_authorizenet>
+                <active>0</active>
+                <model>Zero\AuthorizeNet\Model\Standard</model>
+                <order_status>processing</order_status>
+                <payment_action>authorize_capture</payment_action>
+                <title>Credit Card (Authorize.Net)</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </zero_authorizenet>
+        </payment>
+    </default>
+</config>

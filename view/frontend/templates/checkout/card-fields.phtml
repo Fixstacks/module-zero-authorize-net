@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © 2026 Roman Pasichnyk
+ * SPDX-License-Identifier: OSL-3.0 OR AFL-3.0
+ *
+ * Authorize.Net card form (Accept.js custom form). The card inputs have NO
+ * `name`, so a card number is never posted here: checkout-authorizenet.js
+ * tokenizes them into the hidden opaqueData fields.
+ *
+ * Shown by a `#payment-methods:has(...:checked) ~` rule: keep it a sibling of
+ * #payment-methods, and no `flex` utility on the root (it beats `display:none`).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Zero\AuthorizeNet\ViewModel\CheckoutConfig $authNetConfig
+ */
+$authNetConfig = $block->getData('authNetConfig')->getClientConfig();
+if ($authNetConfig === null) {
+    return;
+}
+$acceptJsUrl = $authNetConfig['testMode'] ? 'https://jstest.authorize.net/v1/Accept.js' : 'https://js.authorize.net/v1/Accept.js';
+?>
+<div id="authorizenet-card-fields" class="flex-col gap-3 rounded-field border border-base-300 p-4">
+    <div class="field">
+        <label class="label" for="authnet-cc-number"><?= $escaper->escapeHtml(__('Card Number')) ?></label>
+        <input type="text" id="authnet-cc-number" autocomplete="cc-number" inputmode="numeric"
+               class="input input-bordered w-full" />
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+        <div class="field">
+            <label class="label" for="authnet-cc-expiration"><?= $escaper->escapeHtml(__('Expiration (MM/YYYY)')) ?></label>
+            <input type="text" id="authnet-cc-expiration" autocomplete="cc-exp" placeholder="MM/YYYY"
+                   class="input input-bordered w-full" />
+        </div>
+        <div class="field">
+            <label class="label" for="authnet-cc-cvv"><?= $escaper->escapeHtml(__('CVV')) ?></label>
+            <input type="text" id="authnet-cc-cvv" autocomplete="cc-csc" inputmode="numeric"
+                   class="input input-bordered w-full" />
+        </div>
+    </div>
+    <div id="authorizenet-error" class="text-error text-sm hidden" role="alert"></div>
+    <input type="hidden" name="authnet_data_descriptor" id="authnet_data_descriptor" />
+    <input type="hidden" name="authnet_data_value" id="authnet_data_value" />
+</div>
+<script src="<?= $escaper->escapeUrl($acceptJsUrl) ?>" charset="utf-8"></script>
+<script type="application/json" id="zero-authorizenet-config"><?= /* @noEscape */ json_encode([
+    'apiLoginId' => $authNetConfig['apiLoginId'],
+    'clientKey' => $authNetConfig['clientKey'],
+]) ?></script>
+<script src="<?= $escaper->escapeUrl($block->getViewFileUrl('Zero_AuthorizeNet::js/checkout-authorizenet.js')) ?>" defer></script>
