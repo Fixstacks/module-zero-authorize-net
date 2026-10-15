@@ -4,7 +4,7 @@ Zero for Magento Open Source: Authorize.Net cards (Accept.js) for Zero Checkout.
 
 ## Install
 
-Requires Magento Open Source 2.4.7–2.4.9 and PHP 8.2–8.4.
+Requires Magento Open Source 2.4.7–2.4.9 and PHP 8.2–8.4 with the GD extension built with WebP (`php -r 'var_dump(function_exists("imagewebp"));'` says `true`; Magento's own PHP requirements cover the rest). Without WebP in GD, Zero skips its WebP image copies and serves the originals.
 
 ```bash
 composer require fixstacks/module-zero-authorize-net
