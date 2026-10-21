@@ -1,4 +1,4 @@
-# fixstacks/module-zero-authorize-net — licensing
+# zerofront/module-zero-authorize-net — licensing
 
 Copyright © 2026 Roman Pasichnyk.
 
